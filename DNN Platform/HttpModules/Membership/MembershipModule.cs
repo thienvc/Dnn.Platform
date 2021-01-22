@@ -157,7 +157,7 @@ namespace DotNetNuke.HttpModules.Membership
                 }
 
                 // Localization.SetLanguage also updates the user profile, so this needs to go after the profile is loaded
-                if (request.RawUrl != null && !ServicesModule.ServiceApi.IsMatch(request.RawUrl))
+                if (request.RawUrl != null && !ServicesModule.ServiceApi.IsMatch(request.RawUrl) && !string.IsNullOrEmpty(user.Profile.PreferredLocale))
                 {
                     Localization.SetLanguage(user.Profile.PreferredLocale);
                 }
